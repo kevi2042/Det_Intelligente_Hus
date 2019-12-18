@@ -49,13 +49,45 @@
 #define RGB_Yellow RGB_Red | RGB_Green
 
 //toggles for at få lysne til at lyse
-#define RGB_toggle_RED RGB_PORT = RGB_Red
-#define RGB_toggle_BLUE RGB_PORT = RGB_Blue
-#define RGB_toggle_YELLow RGB_PORT = RGB_Yellow
-#define RGB_toggle_GREEN RGB_PORT = RGB_Green
+#define RGB_TOGGLE_RED RGB_PORT = RGB_Red
+#define RGB_TOGGLE_BLUE RGB_PORT = RGB_Blue
+#define RGB_TOGGLE_YELLow RGB_PORT = RGB_Yellow
+#define RGB_TOGGLE_GREEN RGB_PORT = RGB_Green
 
 #pragma endregion RGB_LED
 //-------------
+
+#pragma endregion Timer3
+
+#pragma region LIGHT
+#define LIGHT_DDR DDRA
+#define LIGHT_PORT PORTA
+#define LIGHT_PORT_OUTPUT (1<<PA1)
+#define LIGHT_TOGGLE LIGHT_PORT ^= LIGHT_PORT_OUTPUT
+
+#pragma endregion LIGHT
+
+
+
+#pragma region Servo
+
+#define SERVO_DDR DDRE
+#define SERVO_PORT (1<<PE3)
+
+#pragma endregion Servo
+
+#pragma region Timer3
+
+#define SERVO_TIMER3A TCCR3A
+#define SERVO_TIMER3B TCCR3B
+
+#define SERVO_TIMER3_COM (1<<COM3A1) | (1 << COM3B1) | (1 << COM3C1)
+#define SERVO_TIMER3A_WGM (1 << WGM31)
+#define SERVO_TIMER3B_WGM  (1<<WGM33)
+
+#define SERVO_TIMER3_PRESCALER (1<<CS11)
+#define SERVO_OC OCR3A
+
 
 
 //-----------------------------------------------------------------------------------------------
@@ -63,9 +95,10 @@
 void Port_Init();
 void Init_Keypad();
 void Init_RGBLED();
-
+void Init_Timer3Servo();
+void Init_Servo();
 void Display_Init();
 void Display_Setup(int column, int row);
-
+void Init_LIGTH();
 
 #endif /* INITS_H_ */

@@ -12,9 +12,8 @@
 #include <string.h>
 #include "Inits/Inits.h"
 #include "DoorLock/DoorLock.h"
-#include "LCD/lcd.h"
-#include "Keypad/Keypad.h"
-#include "RGB_LED/RGB.h"
+
+
 
 int main(void)
 {
@@ -27,7 +26,8 @@ int main(void)
     while (1) 
     {
 		Display_Init();
-		OpenLock();
+		
+		Doorlock();
     }
 }
 

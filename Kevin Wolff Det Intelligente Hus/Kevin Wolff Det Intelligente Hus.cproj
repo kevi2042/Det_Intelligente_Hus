@@ -162,13 +162,19 @@
     <Compile Include="LCD\lcd.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LED_Display\LED_Display.c">
+    <Compile Include="LCD_Display\LCD_Display.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="LED_Display\LED_Display.h">
+    <Compile Include="LCD_Display\LCD_Display.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MyHouse\House.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MyHouse\House.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="RGB_LED\RGB.c">
@@ -183,7 +189,8 @@
     <Folder Include="Keypad" />
     <Folder Include="Inits" />
     <Folder Include="DoorLock" />
-    <Folder Include="LED_Display" />
+    <Folder Include="LCD_Display" />
+    <Folder Include="MyHouse" />
     <Folder Include="RGB_LED" />
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />

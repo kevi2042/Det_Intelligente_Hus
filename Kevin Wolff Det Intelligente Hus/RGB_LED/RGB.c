@@ -9,17 +9,17 @@
 #include "../Inits/Inits.h"
 
 void Toggle_Red(){
-	RGB_toggle_RED;
+	RGB_TOGGLE_RED;
 }
 
 void Toggle_Blue(){
-	RGB_toggle_BLUE;
+	RGB_TOGGLE_BLUE;
 }
 
 void Toggle_Yellow(){
-	RGB_toggle_YELLow;
+	RGB_TOGGLE_YELLow;
 }
 
 void Toggle_Green(){
-	RGB_toggle_GREEN;
+	RGB_TOGGLE_GREEN;
 }

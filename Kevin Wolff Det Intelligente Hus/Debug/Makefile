@@ -37,7 +37,8 @@ SUBDIRS :=  \
 ../Keypad \
 ../Inits \
 ../DoorLock \
-../LED_Display \
+../LCD_Display \
+../MyHouse \
 ../RGB_LED
 
 
@@ -47,8 +48,9 @@ C_SRCS +=  \
 ../Inits/Inits.c \
 ../Keypad/Keypad.c \
 ../LCD/lcd.c \
-../LED_Display/LED_Display.c \
+../LCD_Display/LCD_Display.c \
 ../main.c \
+../MyHouse/House.c \
 ../RGB_LED/RGB.c
 
 
@@ -63,8 +65,9 @@ DoorLock/DoorLock.o \
 Inits/Inits.o \
 Keypad/Keypad.o \
 LCD/lcd.o \
-LED_Display/LED_Display.o \
+LCD_Display/LCD_Display.o \
 main.o \
+MyHouse/House.o \
 RGB_LED/RGB.o
 
 OBJS_AS_ARGS +=  \
@@ -72,8 +75,9 @@ DoorLock/DoorLock.o \
 Inits/Inits.o \
 Keypad/Keypad.o \
 LCD/lcd.o \
-LED_Display/LED_Display.o \
+LCD_Display/LCD_Display.o \
 main.o \
+MyHouse/House.o \
 RGB_LED/RGB.o
 
 C_DEPS +=  \
@@ -81,8 +85,9 @@ DoorLock/DoorLock.d \
 Inits/Inits.d \
 Keypad/Keypad.d \
 LCD/lcd.d \
-LED_Display/LED_Display.d \
+LCD_Display/LCD_Display.d \
 main.d \
+MyHouse/House.d \
 RGB_LED/RGB.d
 
 C_DEPS_AS_ARGS +=  \
@@ -90,8 +95,9 @@ DoorLock/DoorLock.d \
 Inits/Inits.d \
 Keypad/Keypad.d \
 LCD/lcd.d \
-LED_Display/LED_Display.d \
+LCD_Display/LCD_Display.d \
 main.d \
+MyHouse/House.d \
 RGB_LED/RGB.d
 
 OUTPUT_FILE_PATH +=Kevin\ Wolff\ Det\ Intelligente\ Hus.elf
@@ -136,7 +142,7 @@ LCD/lcd.o: ../LCD/lcd.c
 	@echo Finished building: $<
 	
 
-LED_Display/LED_Display.o: ../LED_Display/LED_Display.c
+LCD_Display/LCD_Display.o: ../LCD_Display/LCD_Display.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
@@ -144,6 +150,13 @@ LED_Display/LED_Display.o: ../LED_Display/LED_Display.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+MyHouse/House.o: ../MyHouse/House.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.3.300\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

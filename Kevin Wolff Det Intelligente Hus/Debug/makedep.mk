@@ -10,9 +10,11 @@ Keypad\Keypad.c
 
 LCD\lcd.c
 
-LED_Display\LED_Display.c
+LCD_Display\LCD_Display.c
 
 main.c
+
+MyHouse\House.c
 
 RGB_LED\RGB.c
 
