@@ -6,12 +6,12 @@
  */ 
 
 #include <avr/io.h>
-#include <util/delay.h>
+#include <avr/interrupt.h>
 #include "../LCD/lcd.h"
 #include "Inits.h"
 
-//defines
-
+#define F_CPU CPUFREQUENZ
+#include <util/delay.h>
 
 //initialiser portne
 void Port_Init(){
@@ -23,12 +23,15 @@ void Port_Init(){
 	Init_LIGTH();
 }
 
+//Sætter port for Keypad
 void Init_Keypad(){
 		//sætter input port (Pull up) på matrix keypad
 		MATRIX_DDR &= ~MATRIX_DDR_INPUTPORT;
 		
 		// PK0-3 er High, PK4-7 er Low
 		MATRIX_DDR |= MATRIX_DDR_OUTPUTPORT;
+		
+		//Sætter alle Port til 1
 		MATRIX_PORT |= 0xFF;
 		////		PK4	PK5	PK6	PK7
 		////	PK0	 0	 0	 0	 0
@@ -37,30 +40,35 @@ void Init_Keypad(){
 		////	PK3	 0	 0	 0	 0
 }
 
+//Sætter port for RGB LED
 void Init_RGBLED(){
 	//sætter input port (pull up) på RGB LED
 	RGB_DDR &= ~RGB_DDR_INPUTPORT;
 }
 
+//Sætter port for almindelig lys
 void Init_LIGTH(){
-	
+	LIGHT_DDR |= LIGHT_PORT_OUTPUT;
 }
 
+// Sætter Port for Servo
 void Init_Servo(){
 	SERVO_DDR |= SERVO_PORT;
 }
 
+//Sætter Timer indstillinger der bruges til Servo
 void Init_Timer3Servo(){
-		// Compare Output Mode: Fast PWM Mode: Clear OC0A on Compare Match, set OC0A at BOTTOM, non-inverting mode (Table 16-3)
-		SERVO_TIMER3A |= SERVO_TIMER3_COM;					// datasheet 16.9.1
+		// Compare Output Mode: Fast PWM Mode:  (Table 16-3)
+		SERVO_TIMER3A |= SERVO_TIMER3_COM;					// datasheet 17.11.3
 		
-		//Waveform Generation Mode: Mode 5 Phase Correct PWM: WGM0 = 1, WGM2 = 1 (Table 16-8)
+		//Waveform Generation Mode: Mode 10 Phase Correct PWM: WGM31 = 1, WGM33 = 1 (Table 17.9.1)
 		SERVO_TIMER3A |= SERVO_TIMER3A_WGM;
 		SERVO_TIMER3B |= SERVO_TIMER3B_WGM;
 		
-		// Clock Select Bit: clk/64 prescaling: CS = 011 : CS01 = 1, CS00 = 1 (Table 16-9), frekv. = 980Hz
-		SERVO_TIMER3B |= SERVO_TIMER3_PRESCALER;		// datasheet 16.9.2
-		ICR3 = 20000;
+		// Clock Select Bit: clk/256 prescaling: CS11 = 1 (Table 17-6)
+		SERVO_TIMER3B |= SERVO_TIMER3_PRESCALER;		// datasheet 17.11.8
+		SERVO_TIMER3ICR;
+		
 }
 
 //initialiserer display

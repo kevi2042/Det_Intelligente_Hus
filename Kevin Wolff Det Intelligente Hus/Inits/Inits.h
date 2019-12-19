@@ -11,6 +11,9 @@
 #define INITS_H_
 
 //-----------------------------------------global defines---------------------------------------
+
+#define CPUFREQUENZ 16000000UL
+
 //------Keypad------
 #pragma region Matrix_Keypad
 //Port og output/input
@@ -57,7 +60,7 @@
 #pragma endregion RGB_LED
 //-------------
 
-#pragma endregion Timer3
+
 
 #pragma region LIGHT
 #define LIGHT_DDR DDRA
@@ -84,10 +87,12 @@
 #define SERVO_TIMER3_COM (1<<COM3A1) | (1 << COM3B1) | (1 << COM3C1)
 #define SERVO_TIMER3A_WGM (1 << WGM31)
 #define SERVO_TIMER3B_WGM  (1<<WGM33)
+#define SERVO_TIMER3ICR ICR3 = 20000
 
 #define SERVO_TIMER3_PRESCALER (1<<CS11)
 #define SERVO_OC OCR3A
 
+#pragma endregion Timer3
 
 
 //-----------------------------------------------------------------------------------------------

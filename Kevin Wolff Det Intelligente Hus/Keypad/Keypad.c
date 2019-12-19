@@ -6,10 +6,12 @@
  */ 
 
 #include <avr/io.h>
-#include <util/delay.h>
 #include "../LCD/lcd.h"
 #include "Keypad.h"
 #include "../Inits/Inits.h"
+
+#include <util/delay.h>
+
 
 
 char MatrixScanning(){

@@ -20,6 +20,6 @@ void InputError();
 void LockOpened();
 void LockOut();
 void LockDoor();
-void CheckLock();
+int CheckLock();
 
 #endif /* DOORLOCK_H_ */

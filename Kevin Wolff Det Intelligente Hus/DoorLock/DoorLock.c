@@ -4,7 +4,7 @@
  * Created: 16-12-2019 14:26:02
  *  Author: kevi2042
  */ 
-#define F_CPU 16000000UL
+#define F_CPU CPUFREQUENZ
 
 #include "../Inits/Inits.h"
 #include "../Keypad/Keypad.h"
@@ -16,7 +16,7 @@
 
 static char input[6] = "****";
 static int wrongPinCount = 0;
-int lock = 0;
+static int lock = 0;
 
 void Doorlock(){
 	if(lock == 0){
@@ -62,13 +62,12 @@ void OpenLock(){
 			}
 		}
 	}
-	
+	wrongPinCount = 0;
+	lock = 1;
 	DisplayLockOpen();
 	Toggle_Green();
 	DisplayMyHomeGreeting();
 	//programmet kommer kun ud af while lykken hvis døren er låst op. (Lockcheck returnerer kun 0 eller 1)
-	wrongPinCount = 0;
-	lock = 1;
 }
 
 void InputError(){
@@ -132,8 +131,17 @@ void LockOut(){
 
 void LockDoor(){
 	lock = 0;
+	ResetInput();
 }
 
-void CheckLock(){
-	return lock;
+int CheckLock(){
+	if(lock == 0){
+		return 0;
+	}
+	else if(lock == 1){
+		return 1;
+	}
+	else{
+		return -1;
+	}
 }
