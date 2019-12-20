@@ -14,10 +14,11 @@
 #include <string.h>
 #include <util/delay.h>
 
-static char input[6] = "****";
-static int wrongPinCount = 0;
-static int lock = 0;
+char input[6] = "****";
+int wrongPinCount = 0;
+int lock = 0;
 
+// Kigger om døre er låst eller ej, og vælger hvilken menu programmet skal køre
 void Doorlock(){
 	if(lock == 0){
 		OpenLock();
@@ -30,6 +31,7 @@ void Doorlock(){
 	}
 }
 
+// Funktion der ber om pin og åbner låsen alt efter om pin er rigtig eller ej
 void OpenLock(){
 	char hiddenPin[] = "1234";
 	
@@ -70,6 +72,7 @@ void OpenLock(){
 	//programmet kommer kun ud af while lykken hvis døren er låst op. (Lockcheck returnerer kun 0 eller 1)
 }
 
+// Kører nødvendige funktioner til hvis brugeren indtaster forkert
 void InputError(){
 		//RGB LED lyser rød
 		Toggle_Red();
@@ -78,6 +81,7 @@ void InputError(){
 		ResetInput();
 }
 
+// kigger om input og hiddenPin stemmer over ens
 int PinCheck(char input[], char hiddenPin[]){
 	// ved strcmp returnere den 0 hvis begge strings er ens.
 	int cmpvalue = strcmp(input, hiddenPin);
@@ -89,6 +93,7 @@ int PinCheck(char input[], char hiddenPin[]){
 	}
 }
 
+// tilføjer charakter til global variablen: input
 void AddCharacter(char charakter){
 	//for at bruge string metoder kræver det at stringet indeholder "\0" i slutningen
 	for (int i = 0; i < PINLENGTH;i++)
@@ -100,6 +105,7 @@ void AddCharacter(char charakter){
 	}
 }
 
+// tester input om alle karakterer er blevet ændret fra * til noget andet
 int TestInput(){
 	if(input[PINLENGTH-1] == '*'){
 		return 0;
@@ -109,6 +115,7 @@ int TestInput(){
 	}
 }
 
+// sætter Global variabel input, til default: ****
 void ResetInput(){
 	for (int i = 0; i < PINLENGTH;i++)
 	{
@@ -116,11 +123,13 @@ void ResetInput(){
 	}
 }
 
+// Kører funktioner hvis låsen er låst op
 void LockOpened(){
 	Toggle_Green();
 	HouseMenu();
 }
 
+// lukker brugeren ude hvis pin er inputtet 3 gange forkert
 void LockOut(){
 	DisplayLockout();
 	Toggle_Red();
@@ -129,11 +138,13 @@ void LockOut(){
 	}
 }
 
+// låser døren og nulstiller input
 void LockDoor(){
 	lock = 0;
 	ResetInput();
 }
 
+// kigger om døren er låst
 int CheckLock(){
 	if(lock == 0){
 		return 0;

@@ -8,7 +8,7 @@
 
 #ifndef DOORLOCK_H_
 #define DOORLOCK_H_
-#define PINLENGTH 4
+
 
 void Doorlock();
 int PinCheck();

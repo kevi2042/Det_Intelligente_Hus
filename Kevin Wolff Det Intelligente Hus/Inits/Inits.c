@@ -13,7 +13,7 @@
 #define F_CPU CPUFREQUENZ
 #include <util/delay.h>
 
-//initialiser portne
+//Kører alle init funktioner
 void Port_Init(){
 	Init_Keypad();
 	Display_Init();
@@ -58,8 +58,8 @@ void Init_Servo(){
 
 //Sætter Timer indstillinger der bruges til Servo
 void Init_Timer3Servo(){
-		// Compare Output Mode: Fast PWM Mode:  (Table 16-3)
-		SERVO_TIMER3A |= SERVO_TIMER3_COM;					// datasheet 17.11.3
+		// Compare Output Mode: Fast PWM Mode: datasheet 17.11.3
+		SERVO_TIMER3A |= SERVO_TIMER3_COM;					
 		
 		//Waveform Generation Mode: Mode 10 Phase Correct PWM: WGM31 = 1, WGM33 = 1 (Table 17.9.1)
 		SERVO_TIMER3A |= SERVO_TIMER3A_WGM;
@@ -78,17 +78,4 @@ void Display_Init(){
 
 	/* clear display and home cursor */
 	lcd_clrscr();
-}
-
-//starter display op med column og row info
-void Display_Setup(int column, int row){
-	char buffer[7];
-	
-	lcd_puts("Column ");
-	itoa(column, buffer, 10);
-	lcd_puts(buffer);
-	lcd_puts(" Row ");
-	itoa(row, buffer, 10);
-	lcd_puts(buffer);
-	lcd_puts("\r\n");
 }

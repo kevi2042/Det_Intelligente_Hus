@@ -12,8 +12,7 @@
 
 #include <util/delay.h>
 
-
-
+// scanner matrix keypad efter input og returnere karakteret
 char MatrixScanning(){
 	int column = 0;
 	int row = -1;
