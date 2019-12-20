@@ -48,6 +48,7 @@ void OpenLock(){
 		//if til hvis brugeren har indtastet den forkerte pin 3 gange
 		if(wrongPinCount == 3){
 			lock = -1;
+			break;
 		}
 		else{
 			//While til scanning af matrix. kører indtil alt på inputtet indeholder andet end *
@@ -64,11 +65,14 @@ void OpenLock(){
 			}
 		}
 	}
-	wrongPinCount = 0;
-	lock = 1;
-	DisplayLockOpen();
-	Toggle_Green();
-	DisplayMyHomeGreeting();
+	//Hvis pin stemmer over ens
+	if(PinCheck(input, hiddenPin) == 1){
+		wrongPinCount = 0;
+		lock = 1;
+		DisplayLockOpen();
+		Toggle_Green();
+		DisplayMyHomeGreeting();
+	}
 	//programmet kommer kun ud af while lykken hvis døren er låst op. (Lockcheck returnerer kun 0 eller 1)
 }
 
