@@ -14,9 +14,9 @@ For at kunne køre dette program er det nødvendigt at havde disse ting til råd
 - en Potentiometer
 
 ## Opbygning
-[DIH - Opbygning 1.PNG](https://github.com/kevi2042/Det_Intelligente_Hus/blob/master/DIH%20-%20Opbygning%201.PNG "DIH - Opbygning 1.PNG")
+[DIH - Opbygning 1 Beskæret.PNG](https://github.com/kevi2042/Det_Intelligente_Hus/blob/master/DIH%20-%20Opbygning%201%20Besk%C3%A6ret.PNG "DIH - Opbygning 1 Beskæret.PNG")
 
-[DIH - Opbygning 2.PNG](https://github.com/kevi2042/Det_Intelligente_Hus/blob/master/DIH%20-%20Opbygning%202.PNG "DIH - Opbygning 2.PNG")
+[DIH - Opbygning 2 Beskæret.PNG](https://github.com/kevi2042/Det_Intelligente_Hus/blob/master/DIH%20-%20Opbygning%202%20Besk%C3%A6ret.PNG "DIH - Opbygning 2 Beskæret.PNG")
 
 | Porte 							| Bruges til  	|
 |:---------------------------------:|:-------------:|
@@ -180,8 +180,8 @@ Der er lavet 6 c. filer bortset fra main filen.
 #### MyHouse
 | Navn 								| Beskrivelse 							|
 |-----------------------------------|---------------------------------------|
-| void HouseMenu() 					| Viser valgmuligheder brugeren har og tager imode brugerens input |
-| void HouseController(char choice) | Kører den valgte funktion alt efter hvad brugeren har indtastet |
+| void HouseMenu() 					| Viser valgmuligheder brugeren har og tager imode brugerens input 				|
+| void HouseController(char choice) | Kører den valgte funktion alt efter hvad brugeren har indtastet 				|
 | void ToggleGarage()				| Drejer Servo til modsatte side |
 | void ToggleLight() 				| Toggler lyset |
 
