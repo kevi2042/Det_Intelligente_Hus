@@ -1,11 +1,11 @@
 ﻿# Det Intelligente Hus
 
 ## Lavt Med
-Programmet er lavet i C sproget på Atmel studio. Der er blevet brugt en Aruino Board 2560 til at bygge diverse ting op.
+Programmet er lavet i C sproget på Atmel studio. Programmet er skrevet til Arduino Boardet: Atmega2560.
 
 ## Forudsætninger
 For at kunne køre dette program er det nødvendigt at havde disse ting til rådighed: 
-- en Arduino Board 2560
+- en Arduino Board 2560 (Eller en der kan de samme ting)
 - en Matrix Keypad
 - en LCD Display
 - en RGB LED
@@ -69,7 +69,7 @@ Der er lavet 6 c. filer bortset fra main filen.
 | PINLENGTH 	| 4 		| Bruges til størrelsen af pinkoden til låsen |
 
 #### Keypad
-|Defines  				| Indholde  |
+|Defines  				| Indholder  |
 |-----------------------|-----------|
 | MATRIX_PORT  			| PORTK 	|
 | MATRIX_DDR 			| DDRK		|
@@ -87,7 +87,7 @@ Der er lavet 6 c. filer bortset fra main filen.
 
 #### RGB LED
 
-|Defines  				| Indholde  |
+|Defines  				| Indholder  |
 |-----------------------|-----------|
 | RGB_PORT 				| PORTF  	|
 | RGB_DDR 				|  DDRF		|
@@ -102,7 +102,7 @@ Der er lavet 6 c. filer bortset fra main filen.
 | RGB_TOGGLE_GREEN  	| RGB_PORT = RGB_Green 	|
 
 #### LED Lys
-|Defines  				| Indholde  |
+|Defines  				| Indholder  |
 |-----------------------|-----------|
 | LIGHT_DDR  			| DDRA 		|
 | LIGHT_PORT  			|  PORTA 	|
@@ -110,13 +110,13 @@ Der er lavet 6 c. filer bortset fra main filen.
 | LIGHT_TOGGLE  		| LIGHT_PORT ^= LIGHT_PORT_OUTPUT |
 
 #### Servo Port
-|Defines  				| Indholde  |
+|Defines  				| Indholder  |
 |-----------------------|-----------|
 | SERVO_DDR  			| DDRE 		|
 | SERVO_PORT  			| (1<<PE3) 	|
 
 #### Servo Timer
-|Defines  					| Indholde  |
+|Defines  					| Indholder  |
 |---------------------------|-----------|
 | SERVO_TIMER3A  			| TCCR3A 	|
 | SERVO_TIMER3B  			| TCCR3B 	|
@@ -156,6 +156,14 @@ Der er lavet 6 c. filer bortset fra main filen.
 | void Display_Init() 	| Initialiser LCD Displayet |
 | void Init_LIGTH() 	| Sætter Port for LED lyset |
 
+#### Keypad
+| Navn 					| Beskrivelse 							|
+|-----------------------|---------------------------------------|
+| int ColumnScan(int column) | Sætter columns skiftevis til logisk 0 |
+| int ReadRows() 		| Tester rows efter input |
+| char MatrixScanning() | Scanner keypaddet og sender karakteret tilbage |
+| char DecodeKeyboard(int column, int row) | finder karakteret der passer til column og row |
+
 
 #### LCD_Display
 | Navn 								| Beskrivelse 							|
@@ -186,7 +194,7 @@ Der er lavet 6 c. filer bortset fra main filen.
 | void Toggle_Green() 	| Tænder for Grønt lys |
 
 ## Globale Variabler
-| Vraibel 					| Beskrivelse |
+| Variabel 					| Beskrivelse |
 |---------------------------|------------|
 | static char matrix[4][4] 	| indeholder karaktere som findes på keypad |
 | char input[6] = "****" 	| Brugerens input som sammenlignes med pin koden til låset, default den sat til stjerner for at man kan genbruge samme variabel |
