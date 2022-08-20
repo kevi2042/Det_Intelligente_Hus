@@ -1,5 +1,7 @@
 ﻿# Det Intelligente Hus
 
+Lavet under uddannelse som datateknikker med speciale i programmering
+
 ## Lavt Med
 Programmet er lavet i C sproget på Atmel studio. Programmet er skrevet til Arduino Boardet: Atmega2560.
 
